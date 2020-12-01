@@ -72,15 +72,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "cli-hex-rgb"
-version = "0.1.0"
-dependencies = [
- "copypasta",
- "owo-colors",
- "structopt",
-]
-
-[[package]]
 name = "clipboard-win"
 version = "3.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -135,6 +126,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5aca5565f760fb5b220e499d72710ed156fdb74e631659e99377d9ebfbd13ae8"
 dependencies = [
  "libc",
+]
+
+[[package]]
+name = "hex-rgb"
+version = "0.1.0"
+dependencies = [
+ "copypasta",
+ "owo-colors",
+ "structopt",
 ]
 
 [[package]]

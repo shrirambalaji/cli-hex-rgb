@@ -1,4 +1,4 @@
-use cli_hex_rgb::*;
+use hex_rgb::*;
 use copypasta::{ClipboardContext, ClipboardProvider};
 use owo_colors::OwoColorize;
 use std::process;

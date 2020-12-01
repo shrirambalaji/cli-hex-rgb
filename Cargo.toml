@@ -1,5 +1,5 @@
 [package]
-name = "cli-hex-rgb"
+name = "hex-rgb"
 version = "0.1.0"
 authors = ["shriramb"]
 edition = "2018"

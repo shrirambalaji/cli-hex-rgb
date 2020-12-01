@@ -2,9 +2,9 @@ use std::{fmt, num::ParseIntError};
 
 #[derive(Debug)]
 pub struct Color {
-    red: u8,
-    green: u8,
-    blue: u8,
+    pub red: u8,
+    pub green: u8,
+    pub blue: u8,
 }
 
 pub enum HexError {
@@ -17,10 +17,10 @@ impl fmt::Display for HexError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
             HexError::OddLength => {
-                "invalid hexcode representation. hexcode has odd number of bytes".fmt(f)
+                "Invalid hexadecimal color code representation. hexcode has odd number of bytes".fmt(f)
             }
             HexError::Empty => "hexcode is empty.".fmt(f),
-            HexError::Invalid => "invalid hexcode representation.".fmt(f),
+            HexError::Invalid => "Invalid hexadecimal color code representation.".fmt(f),
         }
     }
 }
@@ -56,6 +56,12 @@ impl Color {
     }
 }
 
+impl PartialEq for Color {
+    fn eq(&self, other: &Color) -> bool {
+        self.red == other.red && self.green == other.green && self.blue == other.blue
+    }
+}
+
 /// Crops letters from 0 to pos-1 and returns the rest of the string slice.
 fn crop_letters(s: &str, pos: usize) -> &str {
     match s.char_indices().skip(pos).next() {
@@ -73,12 +79,9 @@ fn decode_hex(s: &str) -> Result<Vec<u8>, ParseIntError> {
 }
 
 /// Converts a hexcode to an rgb string
-pub fn convert_hexcode_to_rgb(hex_code: String) -> Result<String, String> {
+pub fn convert_hexcode_to_rgb(hex_code: String) -> Result<Color, String> {
     match Color::new(&hex_code) {
-        Ok(color) => Ok(format!(
-            "rgb({}, {}, {})",
-            color.red, color.green, color.blue
-        )),
+        Ok(color) => Ok(color),
         Err(e) => Err(e),
     }
 }
@@ -86,10 +89,13 @@ pub fn convert_hexcode_to_rgb(hex_code: String) -> Result<String, String> {
 #[test]
 fn should_convert_hexcode_to_rgb() {
     let hex = String::from("#ffffff");
-    assert_eq!(
-        "rgb(255, 255, 255)".to_owned(),
-        convert_hexcode_to_rgb(hex).unwrap()
-    )
+    let expected_color: Color = Color {
+        red: 255,
+        green: 255,
+        blue: 255,
+    };
+
+    assert_eq!(expected_color, convert_hexcode_to_rgb(hex).unwrap())
 }
 
 #[test]

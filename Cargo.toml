@@ -5,4 +5,5 @@ authors = ["shriramb"]
 edition = "2018"
 
 [dependencies]
+owo-colors = "1.1.3"
 structopt = "0.3.20"

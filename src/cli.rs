@@ -1,6 +1,8 @@
 use cli_hex_rgb::*;
-use structopt::StructOpt;
+use owo_colors::OwoColorize;
 use std::process;
+use structopt::StructOpt;
+const SQUARE: &str = "■";
 
 #[derive(StructOpt, Debug)]
 #[structopt(name = "cli-hex-rgb", about = "A cli to convert hex to rgb")]
@@ -19,10 +21,18 @@ pub fn init() {
             // TODO: Highlight result with specified color, or show a box with filled with color
             // TODO: Add option -c, --copy to copy rgb value to clipboard
             // TODO: Add option -i, --inverse to convert from rgb to hex
-            println!("{}", color);
-        },
+            let rgb = format!("rgb({}, {}, {})", color.red, color.green, color.blue);
+            let output = format!(
+                "{} {}",
+                SQUARE.truecolor(color.red, color.green, color.blue),
+                rgb.truecolor(color.red, color.green, color.blue)
+                    .underline()
+            );
+
+            println!("{}", output);
+
         Err(e) => {
-            eprintln!("Error: {}", e);
+            eprintln!("{} {}", " ERROR ".bold().on_bright_red().bright_white(), e.bright_red());
             process::exit(1);
         }
     }

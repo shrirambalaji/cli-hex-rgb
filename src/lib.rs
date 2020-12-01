@@ -50,7 +50,7 @@ impl Color {
             return Err(HexError::Invalid.to_string());
         }
 
-        let decoded_values = decode_hex(&hex_code).unwrap_or(vec![]);
+        let decoded_values = decode_hex(&hex_code).unwrap_or_default();
         if decoded_values.is_empty() || decoded_values.len() > 4 {
             return Err(HexError::Invalid.to_string());
         }
@@ -73,7 +73,7 @@ impl PartialEq for Color {
 
 /// Crops letters from 0 to pos-1 and returns the rest of the string slice.
 fn crop_letters(s: &str, pos: usize) -> &str {
-    match s.char_indices().skip(pos).next() {
+    match s.char_indices().nth(pos) {
         Some((pos, _)) => &s[pos..],
         None => "",
     }
@@ -174,5 +174,7 @@ mod tests {
     #[test]
     fn should_crop_letters() {
         assert_eq!("ello", crop_letters("hello", 1));
+        assert_eq!("fff", crop_letters("#fff", 1));
+        assert_eq!("word", crop_letters("longword", 4));
     }
 }

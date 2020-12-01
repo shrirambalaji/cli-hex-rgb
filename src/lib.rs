@@ -80,9 +80,6 @@ fn crop_letters(s: &str, pos: usize) -> &str {
 }
 
 /// Repeats every character in a string.
-///  ```
-/// repeat_letters("hi", 1) //  returns `hhii`
-///  ```
 fn repeat_letters(s: &str, repetitions: i32) -> String {
     let mut output = String::from("");
     for char in s.chars() {

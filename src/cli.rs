@@ -1,5 +1,5 @@
-use hex_rgb::*;
 use copypasta::{ClipboardContext, ClipboardProvider};
+use hex_rgb::*;
 use owo_colors::OwoColorize;
 use std::process;
 use structopt::StructOpt;
@@ -46,7 +46,11 @@ pub fn init() {
             }
         }
         Err(e) => {
-            eprintln!("{} {}", " ERROR ".bold().on_bright_red().bright_white(), e.bright_red());
+            eprintln!(
+                "{} {}",
+                " ERROR ".bold().on_bright_red().bright_white(),
+                e.bright_red()
+            );
             process::exit(1);
         }
     }

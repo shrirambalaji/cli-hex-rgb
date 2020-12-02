@@ -40,3 +40,22 @@ FLAGS:
 ARGS:
     <hex-code>    A valid hexadecimal color code (Eg. "#fafafa" (or) "#fff")
 ```
+
+## Prerequisites
+
+### Linux
+
+The following packages are required to use `hex-rgb` on linux:
+
+- libxcb1-dev 
+- libxcb-render0-dev 
+- libxcb-shape0-dev 
+- libxcb-xfixes0-dev
+
+On Ubuntu you can install it using:
+
+```
+sudo apt install libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev
+```
+
+For other distributions of linux, the same packages can be obtained from the corresponding repositories.

@@ -3,6 +3,9 @@ name = "hex-rgb"
 version = "0.1.0"
 authors = ["shriramb"]
 edition = "2018"
+description = "A Rust CLI Program to convert hexadecimal color-code to RGB"
+repository = "https://github.com/Shriram-Balaji/cli-hex-rgb"
+license = "MIT"
 
 [dependencies]
 copypasta = "0.7.1"

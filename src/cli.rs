@@ -7,16 +7,17 @@ use structopt::StructOpt;
 const SQUARE: &str = "■";
 
 #[derive(StructOpt, Debug)]
-#[structopt(name = "cli-hex-rgb", about = "A cli to convert hex to rgb")]
+#[structopt(name = "hex-rgb", about = "Converts hexadecimal color code to RGB")]
 struct Opt {
     #[structopt(short, long)]
     /// Activate debug mode (-d, --debug)
     debug: bool,
 
+    /// A valid hexadecimal color code (Eg. #fafafa (or) #fff).
     hex_code: String,
 
     #[structopt(short, long)]
-    /// Enable copy to clipboard
+    /// Copy RGB Color to system clipboard
     copy: bool,
 }
 
